@@ -6,7 +6,6 @@ import javax.ejb.EJB;
 
 import org.app.patterns.EntityRepository;
 import org.app.service.ejb.DataService;
-import org.app.service.ejb.DataServiceEJB;
 import org.app.service.entities.EntityBase;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
