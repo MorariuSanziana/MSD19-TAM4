@@ -5,6 +5,7 @@ import java.util.Collection;
 import javax.ejb.Remote;
 
 import org.app.service.entities.Project;
+import org.app.service.entities.Task;
 
 
 @Remote
@@ -25,4 +26,12 @@ public interface ProjectDataService {
 				
 				// Others
 				String getMessage();
+				
+				Collection<Project> toCollection();
+				
+				
+				Project createNewProject(Integer id);
+
+				Collection<Project> removeFromCollection(Project project);
+					
 }

@@ -5,6 +5,7 @@ import java.util.Collection;
 import javax.ejb.Remote;
 
 import org.app.service.entities.Member;
+import org.app.service.entities.Task;
 
 
 @Remote
@@ -25,4 +26,10 @@ public interface MemberDataService {
 			
 			// Others
 			String getMessage();
+			Collection<Member> toCollection();
+			
+			
+			Member createNewMember(Integer id);
+
+			Collection<Member> removeFromCollection(Member member);
 }

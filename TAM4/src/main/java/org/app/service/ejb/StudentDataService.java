@@ -5,6 +5,7 @@ import java.util.Collection;
 import javax.ejb.Remote;
 
 import org.app.service.entities.Student;
+import org.app.service.entities.Task;
 
 
 @Remote
@@ -26,5 +27,13 @@ public interface StudentDataService {
 	// Others
 	String getMessage();
 
-	Student getStudentByNume(String numeStudent);
+		
+	
+	Student createNewStudent(Integer id);
+
+	Collection<Student> toCollection();
+
+	Collection<Student> removeFromCollection(Student student);
+
+
 }

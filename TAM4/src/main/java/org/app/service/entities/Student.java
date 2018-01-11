@@ -5,12 +5,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import static javax.persistence.FetchType.EAGER;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
+
+@XmlRootElement(name="student")
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity
-public class Student implements Serializable{
+public class Student implements Comparable<Student>, Serializable{
 	@Id
 	@GeneratedValue
 	private Integer idStudent;
@@ -26,6 +37,8 @@ public class Student implements Serializable{
 	@ManyToOne(fetch = EAGER)
 	private Project project;
 
+	
+	@XmlElement
 	public Integer getIdStudent() {
 		return idStudent;
 	}
@@ -34,6 +47,8 @@ public class Student implements Serializable{
 		this.idStudent = idStudent;
 	}
 
+	
+	@XmlElement
 	public String getNumeStudent() {
 		return numeStudent;
 	}
@@ -42,6 +57,8 @@ public class Student implements Serializable{
 		this.numeStudent = numeStudent;
 	}
 
+	
+	@XmlElement
 	public Integer getCNP() {
 		return CNP;
 	}
@@ -49,7 +66,9 @@ public class Student implements Serializable{
 	public void setCNP(Integer cNP) {
 		CNP = cNP;
 	}
-
+	
+	
+	@XmlElement
 	public String getEmail() {
 		return Email;
 	}
@@ -58,6 +77,8 @@ public class Student implements Serializable{
 		Email = email;
 	}
 
+	
+	@XmlElement
 	public Integer getNrTelefon() {
 		return nrTelefon;
 	}
@@ -66,6 +87,8 @@ public class Student implements Serializable{
 		this.nrTelefon = nrTelefon;
 	}
 
+	
+	@XmlElement
 	public String getAdresa() {
 		return Adresa;
 	}
@@ -73,6 +96,7 @@ public class Student implements Serializable{
 	public void setAdresa(String adresa) {
 		Adresa = adresa;
 	}
+
 
 	public Student(Integer idStudent, String numeStudent, Integer cNP, String email, Integer nrTelefon, String adresa) {
 		super();
@@ -86,6 +110,11 @@ public class Student implements Serializable{
 
 	public Student() {
 		super();
+	}
+
+	public Student(Object idStudent2, String numeStudent2, Date date, Date date2, int nrTelefon2,
+			Internship internship2) {
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -113,6 +142,8 @@ public class Student implements Serializable{
 		return true;
 	}
 
+	
+//	@XmlElement
 	public Internship getInternship() {
 		return internship;
 	}
@@ -121,6 +152,8 @@ public class Student implements Serializable{
 		this.internship = internship;
 	}
 
+	
+//	@XmlElement
 	public Team getTeam() {
 		return team;
 	}
@@ -129,6 +162,8 @@ public class Student implements Serializable{
 		this.team = team;
 	}
 
+	
+//	@XmlElement
 	public Project getProject() {
 		return project;
 	}
@@ -137,6 +172,8 @@ public class Student implements Serializable{
 		this.project = project;
 	}
 
+	
+//	@XmlElement
 	public String getIndicative() {
 		// TODO Auto-generated method stub
 		return null;
@@ -147,6 +184,47 @@ public class Student implements Serializable{
 		
 	}
 
+	public static List<Student> toDTOList1(List<Student> students) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* Rest Resource URL*/
+//	public static String BASE_URL = "http://localhost:8080/ScrumREST/internships/";
 	
+	public static String BASE_URL = Internship.BASE_URL;
+	@XmlElement(name = "link")
+    public AtomLink getLink() throws Exception {
+		String restUrl = BASE_URL 
+				+ ((this.getInternship() != null) ? this.getInternship().getIdInternship() : "")
+				+ "/students/" 
+				+ this.getIdStudent();
+        return new AtomLink(restUrl, "get-student");
+    }	
+	public void setLink(AtomLink link){}
+
+	@Override
+	public int compareTo(Student arg0) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public static List<Student> toDTOList(List<Student> students) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* DTO Logic*/
+	/*public Student toDTO(){
+		return new Student( idStudent, numeStudent, CNP, Email,  nrTelefon, Adresa,  internship.toDTO(), team.toDTO(), project.toDTO());
+	}
+	
+	public static List<Student> toDTOList(List<Student> students){
+		List<Student> studentDTOList = new ArrayList<>();
+		for(Student s: students){
+			studentDTOList.add(s.toDTO());
+		}
+		return studentDTOList;
+	}	*/
 
 }

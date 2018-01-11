@@ -32,6 +32,9 @@ import javax.ws.rs.core.Response;
 
 @RunWith(Arquillian.class)
 public class TestDataServiceRestArq {
+
+	
+	
 	private static Logger logger = Logger.getLogger(TestDataServiceRestArq.class.getName());
 	private static String serviceURL = "http://localhost:8080/msd-test/rest/service";
 	

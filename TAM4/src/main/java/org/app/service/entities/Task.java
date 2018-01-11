@@ -1,7 +1,9 @@
 package org.app.service.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
+
+@XmlRootElement(name="task")
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity
 public class Task implements Serializable{
     
@@ -29,6 +38,8 @@ public class Task implements Serializable{
 	@ManyToOne
 	private Member member;
 	
+	
+	@XmlElement
 	public Integer getIdTask() {
 		return idTask;
 	}
@@ -36,48 +47,88 @@ public class Task implements Serializable{
 	public void setIdTask(Integer idTask) {
 		this.idTask = idTask;
 	}
+	
+	@XmlElement
 	public String getDenumireTask() {
 		return denumireTask;
 	}
 	public void setDenumireTask(String denumireTask) {
 		this.denumireTask = denumireTask;
 	}
+	
+	@XmlElement
 	public String getCategorie() {
 		return Categorie;
 	}
 	public void setCategorie(String categorie) {
 		Categorie = categorie;
 	}
+	
+	@XmlElement
 	public String getStatus() {
 		return Status;
 	}
 	public void setStatus(String status) {
 		Status = status;
 	}
+	
+	@XmlElement
 	public Date getDataIncepere() {
 		return dataIncepere;
 	}
 	public void setDataIncepere(Date dataIncepere) {
 		this.dataIncepere = dataIncepere;
 	}
+	
+	@XmlElement
 	public Integer getEstimareDurata() {
 		return estimareDurata;
 	}
 	public void setEstimareDurata(Integer estimareDurata) {
 		this.estimareDurata = estimareDurata;
 	}
+	
+	@XmlElement
 	public Integer getTimpRamas() {
 		return timpRamas;
 	}
 	public void setTimpRamas(Integer timpRamas) {
 		this.timpRamas = timpRamas;
 	}
+	
+	@XmlElement
 	public String getDescriereTask() {
 		return descriereTask;
 	}
 	public void setDescriereTask(String descriereTask) {
 		this.descriereTask = descriereTask;
 	}
+
+//	@XmlElement
+	public Student getStudent() {
+		return student;
+	}
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+	
+//	@XmlElement
+	public Member getMember() {
+		return member;
+	}
+	public void setMember(Member member) {
+		this.member = member;
+	}
+	
+	/* Rest Resource URL*/
+	public static String BASE_URL = "http://localhost:8080/TAM4/resources/tasks/";
+	@XmlElement(name = "link")
+    public AtomLink getLink() throws Exception {
+		String restUrl = BASE_URL + this.getIdTask();
+        return new AtomLink(restUrl, "get-task");
+    }	
+	
+	public void setLink(AtomLink link){}
 	public Task(Integer idTask, String denumireTask, String categorie, String status, Date dataIncepere,
 			Integer estimareDurata, Integer timpRamas, String descriereTask) {
 		super();

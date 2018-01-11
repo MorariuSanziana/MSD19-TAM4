@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import javax.ejb.Remote;
 
+import org.app.service.entities.Task;
 import org.app.service.entities.Team;
 
 
@@ -25,4 +26,8 @@ public interface TeamDataService {
 		
 		// Others
 		String getMessage();
+		Collection<Team> toCollection();
+		
+		
+		Team createNewTeam(Integer id);
 }
