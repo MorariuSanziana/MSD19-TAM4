@@ -1,0 +1,37 @@
+<div data-ng-controller="view3Controller">
+<div id="container">
+    		<div id="header">
+    			<p>Internship Selection to EDIT: {{internshipsSelected[0].name}}</p>
+    		</div>
+   
+   				<table style="width:500px;" cellpadding="1" cellspacing="1" align="left">
+   				
+   					<tr>
+   						<td  align="left"><label for="IdInternship">Id Internship:</label></td>
+				    	<td  align="left"><input id="IdInternship" type="number" ng-model="Internship.IdInternship"  style="width: 100%;"/></td>
+   					</tr>
+   						
+   					<tr>
+						<td  align="left"><label for="denumireInternship">Denumire Internship:</label></td>
+				    	<td  align="left"><input id="denumireInternship" type="text" ng-model="Internship.denumireInternship"  style="width: 100%;"/></td> 					
+   					</tr>
+   						
+   					<tr> 
+						<td  align="left"><label for="dataIncepere">Data incepere:</label></td>
+				    	<td  align="left"><input id="dataIncepere" type="date" ng-model="Internship.dataIncepere"  style="width: 100%;"/></td>   					
+   					</tr>
+   					<tr> 
+   						<td  align="left"><a href="{{Internship.link.href}}"  style="width: 100%;">{{internshipsSelected[0].link.href}}</a></td>
+   						<td  align="left">
+   							<button data-ng-click="save()"  style="width: 100%;">Salveaza</button>
+   							<button data-ng-click="go('/view2');"  style="width: 100%;">Inapoi la Internship</button>
+   						</td>  
+   					</tr>
+   					<tr>
+   						<td colspan="2">
+   							<div id="listDiv" class="gridStudentsStyle" ng-grid="detailGrid"></div>
+   						</td>
+   					</tr>
+				 </table>
+    	</div>
+</div>

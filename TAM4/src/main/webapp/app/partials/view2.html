@@ -1,0 +1,48 @@
+<div data-ng-controller="view2Controller">
+		<div id="container">
+    		<div id="header">
+    			<p>Student Selection to EDIT: {{studentsSelected[0].name}}</p>
+    		</div>
+    		
+    		<div id="menu" style="float:left;">
+    			<div id="listDiv" class="gridStudentsStyle" ng-grid="gridOptions"></div>
+    		</div>
+    		
+    		<div id="content" style="float:left;">
+    				<table style="width:500px;" cellpadding="0" cellspacing="0">
+    					<tr>
+    						<td align="left"><label for="idStudent" >ID Student:</label></td>
+					    	<td align="left"><input id="idStudent" type="number" 
+					    		ng-model="studentsSelected[0].idStudent" style="width: 100%;"/></td>
+    					</tr>
+    						
+    					<tr>
+							<td  align="left"><label for="Nume">Name:</label></td>
+					    	<td  align="left"><input id="numeStudent" type="text" 
+					    		ng-model="studentsSelected[0].numeStudent" style="width: 100%;"/></td> 					
+    					</tr>
+    						
+    					<tr> 
+							<td  align="left"><label for="Email" align="left">Email:</label></td>
+					    	<td  align="left"><input id="Email" type="string" 
+					    		ng-model="studentsSelected[0].Email" style="width: 100%;"/></td>   					
+    					</tr>
+    					
+						<tr> 
+							<td colspan="2" align="right">
+								<button data-ng-click="add()">Adauga</button>
+								<button data-ng-click="save()">Salveaza</button>
+								<button data-ng-click="remove()">Sterge</button>
+								<button data-ng-click="cancel()">Anuleaza</button>
+								
+							</td> 					
+    					</tr>    					
+					 </table>
+    		</div>
+    		
+			<div id="footer">
+    				<a href="{{studentsSelected[0].link.href}}">{{studentsSelected[0].link.href}}</a>
+    		</div>    		
+    	</div>	
+	
+</div>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="App">
+
+	<head>
+		<meta charset="utf-8"/>
+		<title>Learn AngularJS - Navigation Menu</title>
+
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="http://angular-ui.github.com/ng-grid/css/ng-grid.css" />
+		<link href="css/app.css" rel="stylesheet" />
+		
+        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    	<script data-require="angular.js@1.2.x" src="http://code.angularjs.org/1.2.3/angular.js" data-semver="1.2.3"></script>
+    	<script type="text/javascript" src="https://rawgithub.com/angular-ui/ng-grid/2.0.7/build/ng-grid.debug.js"></script>
+    	<!-- <script type="text/javascript" src="http://angular-ui.github.com/ng-grid/lib/ng-grid.debug.js"></script>  -->  	
+    	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-resource.js"></script>
+    	
+    	<!-- Local app logic -->
+    	<script type="text/javascript" src="js/app.js"></script>	
+    	<script type="text/javascript" src="js/services.js"></script>	
+    	<script type="text/javascript" src="js/controllers.js"></script>	
+    	
+    		
+	</head>
+
+	<body data-ng-controller="mainController">
+		<p>Project Management Web-App</p>
+		<nav class="{{active}}" >
+			<a href="#/view1" class="projectList" ng-click="active='projectList'">Projects</a>
+			<a href="#/view2" class="projectForm" ng-click="active='projectForm'">Project-Form</a>
+			<a href="#/view3" class="projectReleases" ng-click="active='projectReleases'">Project-releases</a>
+			<a href="#/" class="about" ng-click="active='about'">About</a>
+		</nav>
+		
+		
+		<!-- Placeholder for view -->
+		<table style="margin-left:auto;margin-right:auto;">
+			<tr>
+				<td><div data-ng-view="partials/view1.html"></div></td>
+			</tr>
+		</table>
+
+	</body>
+</html>
